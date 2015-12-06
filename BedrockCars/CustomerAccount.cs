@@ -8,25 +8,44 @@ namespace BedrockCars
 {
     class CustomerAccount
     {
+        #region Variables
+        /// <summary
+        /// Shared memory for storing the last customer number
+        /// </summary>
+        private static int lastCustomerNumber = 0;
+        #endregion
+
         #region Properties
-     /// <summary>
-     /// Customer Name
-     /// </summary>
-    public string CustomerName  { get; set; }
+        /// <summary>
+        /// Customer Name
+        /// </summary>
+        public string CustomerName  { get; set; }
 
     /// <summary>
     /// Customer number
     /// </summary>
-    public int CustomerNumber { get; set; }
+    public int CustomerNumber { get;
+            private set; }
 
     /// <summary>
     /// Customer Balance
     /// </summary>
-    public decimal Balance { get; set; }
+    public decimal Balance { get;
+            private set; }
+        #endregion
+
+
+        #region Constructors
+
+        public CustomerAccount()
+        {
+            CustomerNumber = ++lastCustomerNumber;
+        }
+
         #endregion
 
         #region Methods
-        
+
         //Rent a car
         //Return a rented car
 

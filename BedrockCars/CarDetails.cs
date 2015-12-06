@@ -22,7 +22,8 @@ namespace BedrockCars
         /// <summary>
         /// Car rental Price per day
         /// </summary>
-        public decimal DailyRate { get; set; }
+        public decimal DailyRate { get;
+            private set; }
 
         /// <summary>
         /// Car availability

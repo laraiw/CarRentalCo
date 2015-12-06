@@ -8,6 +8,14 @@ namespace BedrockCars
 {
     class RentalRecord
     {
+        #region Variables
+        /// <summary
+        /// Shared memory for storing the last Rental Record number
+        /// </summary>
+        private static int lastRecordNumber = 0;
+        #endregion
+
+
         #region Properties
         /// <summary>
         /// License Plate number
@@ -22,7 +30,8 @@ namespace BedrockCars
         /// <summary>
         /// Rental record number
         /// </summary>
-        public int RecordNumber { get; set; }
+        public int RecordNumber { get;
+            private set; }
 
         /// <summary>
         /// Rental Start Date
@@ -48,6 +57,16 @@ namespace BedrockCars
         /// Car rental Price per day
         /// </summary>
         public decimal DailyRate { get; set; }
+
+        #endregion
+
+
+        #region Constructors
+
+        public RentalRecord()
+        {
+            RecordNumber = ++lastRecordNumber;
+        }
 
         #endregion
 
