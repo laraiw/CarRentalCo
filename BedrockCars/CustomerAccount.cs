@@ -46,8 +46,7 @@ namespace BedrockCars
 
         #region Methods
 
-        //Rent a car
-        //Return a rented car
+        //Other methods to add later - Rent a car& Return a rented car
 
 
         /// <summary>
@@ -66,9 +65,19 @@ namespace BedrockCars
         /// </summary>
         /// <param name="paidamount">customer's payment towards bill</param>
         /// <returns>Returns balance</returns>
+        /// <exception>ArgumentException</exception>
         public decimal PayBalance(decimal paidamount)
         {
-           Balance = Balance - paidamount;
+            if (paidamount < 0)
+            {
+                throw new ArgumentException("Your payment must equal to your balance");
+            }
+         
+            if (paidamount > Balance)
+          //  {
+          //      throw new ArgumentException("Your payment must equal to your balance, you have overpaid");
+          //  }
+            Balance = Balance - paidamount;
            return Balance;
          }
 
