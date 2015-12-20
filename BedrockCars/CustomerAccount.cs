@@ -73,7 +73,7 @@ namespace BedrockCars
                 throw new ArgumentException("Your payment must equal to your balance");
             }
          
-            if (paidamount > Balance)
+            if (paidamount >= Balance)
           //  {
           //      throw new ArgumentException("Your payment must equal to your balance, you have overpaid");
           //  }

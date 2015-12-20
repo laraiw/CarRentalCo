@@ -12,10 +12,8 @@ namespace BedrockCars
         {
             //Create and instance of an account == object
             var custaccount = new CustomerAccount();
-           // custaccount.CustomerNumber = 001;
             custaccount.CustomerName = "Larai Wush";
-            // custaccount.DisplayBalance(500);
-            custaccount.PayBalance(150);
+            custaccount.DisplayBalance(150);
             Console.WriteLine(
                 "CustomerName: {0}, CustomerNumber: {1}, Balance {2}",
                custaccount.CustomerName, custaccount.CustomerNumber, custaccount.Balance
@@ -24,7 +22,7 @@ namespace BedrockCars
             //Exception Handling
             try
             {
-                custaccount.PayBalance(200);
+                custaccount.PayBalance(150);
             }
             catch (ArgumentException ex)
             {
@@ -42,8 +40,8 @@ namespace BedrockCars
             //comment out the next 4 lines
             //Console.WriteLine("Customer Balance is " + custaccount.Balance);
             //Console.WriteLine("Customer Name is " + custaccount.CustomerName);
-            //Console.WriteLine("PRESS ENTER TO EXIT");
-            //Console.ReadLine();
+            Console.WriteLine("PRESS ENTER TO EXIT");
+            Console.ReadLine();
         }
     }
 }
