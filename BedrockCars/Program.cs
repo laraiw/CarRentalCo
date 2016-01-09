@@ -11,9 +11,9 @@ namespace BedrockCars
         static void Main(string[] args)
         {
             //Create and instance of an account == object
-            var custaccount = new CustomerAccount();
-            custaccount.CustomerName = "Larai Wush";
-            custaccount.DisplayBalance(150);
+            //var custaccount = new CustomerAccount();
+            //custaccount.CustomerName = "Larai Wush";
+            //custaccount.DisplayBalance(150);
             Console.WriteLine(
                 "CustomerName: {0}, CustomerNumber: {1}, Balance {2}",
                custaccount.CustomerName, custaccount.CustomerNumber, custaccount.Balance

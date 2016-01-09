@@ -6,32 +6,34 @@ using System.Threading.Tasks;
 
 namespace BedrockCars
 {
-    class CustomerAccount
+    public class CustomerAccount
     {
-        #region Variables
-        /// <summary
-        /// Shared memory for storing the last customer number
-        /// </summary>
-        private static int lastCustomerNumber = 0;
-        #endregion
+       #region Variables
+       /// <summary
+       /// Shared memory for storing the last customer number
+       /// </summary>
+       private static int lastCustomerNumber = 0;
+       #endregion
 
-        #region Properties
-        /// <summary>
-        /// Customer Name
-        /// </summary>
-        public string CustomerName  { get; set; }
+       #region Properties
+       /// <summary>
+       /// Customer Name
+       /// </summary>
+       public string CustomerName  { get; set; }
 
-    /// <summary>
-    /// Customer number
-    /// </summary>
-    public int CustomerNumber { get;
+       /// <summary>
+       /// Customer number
+       /// </summary>
+       public int CustomerNumber { get;
             private set; }
 
-    /// <summary>
-    /// Customer Balance
-    /// </summary>
-    public decimal Balance { get;
+       /// <summary>
+       /// Customer Balance
+       /// </summary>
+       public decimal Balance { get;
             private set; }
+
+        public string DrivingLicense { get; set; }
         #endregion
 
 
