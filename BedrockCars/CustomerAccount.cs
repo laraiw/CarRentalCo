@@ -33,7 +33,7 @@ namespace BedrockCars
        public decimal Balance { get;
             private set; }
 
-        public string DrivingLicense { get; set; }
+        public int DrivingLicense { get; set; }
         #endregion
 
 

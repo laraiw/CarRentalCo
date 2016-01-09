@@ -9,7 +9,7 @@ namespace BedrockCars
     public static class CarRentalFactory
         
     {
-        public static CustomerAccount CreateAccount(string custname, string driv_lic)
+        public static CustomerAccount CreateAccount(string custname, int driv_lic)
         {
             var custaccount = new CustomerAccount();
             custaccount.CustomerName = custname;

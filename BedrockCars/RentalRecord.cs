@@ -18,9 +18,9 @@ namespace BedrockCars
 
         #region Properties
         /// <summary>
-        /// License Plate number
+        /// Car License Plate number
         /// </summary>
-        public string LicenseNumber { get; set; }
+        public string CarLicenseNumber { get; set; }
 
         /// <summary>
         /// Customer number

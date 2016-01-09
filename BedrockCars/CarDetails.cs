@@ -12,7 +12,7 @@ namespace BedrockCars
         /// <summary>
         /// License Plate number
         /// </summary>
-        public string LicenseNumber { get; set; }
+        public string CarLicenseNumber { get; set; }
 
         // <summary>
         // Car Size - Small, Mid-sized or large
