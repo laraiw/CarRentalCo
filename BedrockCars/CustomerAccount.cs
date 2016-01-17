@@ -8,11 +8,11 @@ namespace BedrockCars
 {
     public class CustomerAccount
     {
-       #region Variables
-       /// <summary
-       /// Shared memory for storing the last customer number
-       /// </summary>
-       private static int lastCustomerNumber = 0;
+        #region Variables
+        /// <summary
+        /// Shared memory for storing the last customer number, and initializing to 0
+        /// </summary>
+        private static int lastCustomerNumber = 0;
        #endregion
 
        #region Properties
@@ -42,6 +42,18 @@ namespace BedrockCars
         public CustomerAccount()
         {
             CustomerNumber = ++lastCustomerNumber;
+        }
+
+        public CustomerAccount(string custname)
+            : this()
+        {
+            CustomerName = custname;
+        }
+
+        public CustomerAccount(string custname, decimal totalamount)
+            : this(custname)
+        {
+            DisplayBalance(totalamount);
         }
 
         #endregion
