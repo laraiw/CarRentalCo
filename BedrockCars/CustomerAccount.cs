@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace BedrockCars
 {
+    public enum AccountType
+    {
+        Commercial,
+        Private
+    }
+
     public class CustomerAccount
     {
         #region Variables
@@ -33,7 +39,9 @@ namespace BedrockCars
        public decimal Balance { get;
             private set; }
 
-        public int DrivingLicense { get; set; }
+       public int DrivingLicense { get; set; }
+
+        public AccountType TypeOfAccount { get; set; }
         #endregion
 
 

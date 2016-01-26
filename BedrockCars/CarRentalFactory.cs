@@ -18,7 +18,7 @@ namespace BedrockCars
             return custaccount;
         }
 
-        public static CustomerAccount CreateAccount(string custname, int driv_lic, decimal totalamount)
+        public static CustomerAccount CreateAccount(string custname, int driv_lic, decimal totalamount, AccountType accountType)
         {
             var custaccount = new CustomerAccount(custname, totalamount);
             custaccount.DrivingLicense = driv_lic;
