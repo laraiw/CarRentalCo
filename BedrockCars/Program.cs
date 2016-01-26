@@ -10,14 +10,26 @@ namespace BedrockCars
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("WELCOME TO BEDROCK BAND!!!");
-            Console.WriteLine("PLEASE ENTER YOUR DRIVE LICENSE NUMBER:");
+            Console.WriteLine("WELCOME TO BEDROCK CAR RENTAL!!!");
+            Console.WriteLine("PLEASE ENTER YOUR DRIVER'S LICENSE NUMBER:");
             var driv_lic = Console.ReadLine();
             int convertedDrivingLicense;
             if (int.TryParse(driv_lic, out convertedDrivingLicense) == true)
                 {
-                var accounts = CarRentalFactory.GetAllAccountsByDL(convertedDrivingLicense);
-                if (accounts == null) { }
+                var custaccounts = CarRentalFactory.GetAllAccountsByDL(convertedDrivingLicense);
+                if (custaccounts == null)
+                {
+                    Console.WriteLine("No accounts found. One will be created");
+                    var custaccount = CarRentalFactory.CreateAccount("Dummy", convertedDrivingLicense);
+                    CarRentalFactory.PayBalance(custaccount.CustomerNumber, 100);
+                }
+                else
+                {
+                    foreach (var custaccount in custaccounts)
+                    {
+                        Console.WriteLine("CustomerNumber: {0}, Balance: {1:c}", custaccount.CustomerNumber, custaccount.Balance);
+                    }
+                }
             }
 
             //var custaccount = CarRentalFactory.CreateAccount("Larai Wush", 123456);

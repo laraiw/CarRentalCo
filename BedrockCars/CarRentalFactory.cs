@@ -9,13 +9,22 @@ namespace BedrockCars
     public static class CarRentalFactory
         
     {
-        private static List<CustomerAccount> custaccounts = new List<CustomerAccount>();
+        //private static List<CustomerAccount> custaccounts = new List<CustomerAccount>();
+
         public static CustomerAccount CreateAccount(string custname, int driv_lic)
         {
-            var custaccount = new CustomerAccount(custname);
-            custaccount.DrivingLicense = driv_lic;
-            custaccounts.Add(custaccount);     
-            return custaccount;
+            using (var db = new CarRentalModel())
+            {
+
+                var custaccount = new CustomerAccount(custname);
+                custaccount.DrivingLicense = driv_lic;
+                //custaccounts.Add(custaccount);
+
+                //adds a row to the database, or entry to the table
+                db.CustomerAccounts.Add(custaccount);
+                db.SaveChanges();
+                return custaccount;
+            }
         }
 
         public static CustomerAccount CreateAccount(string custname, int driv_lic, decimal totalamount, AccountType accountType)
@@ -27,6 +36,9 @@ namespace BedrockCars
             return custaccount;
 
         }
+
+        //public static void PayBalance()
+
         public static IEnumerable<CustomerAccount> GetAllAccountsByDL(int driv_lic)
         {
             return custaccounts.Where(a => a.DrivingLicense == driv_lic);
