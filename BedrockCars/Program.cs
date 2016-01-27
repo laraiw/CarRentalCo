@@ -17,17 +17,18 @@ namespace BedrockCars
             if (int.TryParse(driv_lic, out convertedDrivingLicense) == true)
                 {
                 var custaccounts = CarRentalFactory.GetAllAccountsByDL(convertedDrivingLicense);
-                if (custaccounts == null)
+                if (custaccounts.Count() == 0)
                 {
                     Console.WriteLine("No accounts found. One will be created");
                     var custaccount = CarRentalFactory.CreateAccount("Dummy", convertedDrivingLicense);
-                    CarRentalFactory.PayBalance(custaccount.CustomerNumber, 100);
+                   // CarRentalFactory.PayBalance(custaccount.CustomerNumber, 100);
                 }
                 else
                 {
                     foreach (var custaccount in custaccounts)
                     {
-                        Console.WriteLine("CustomerNumber: {0}, Balance: {1:c}", custaccount.CustomerNumber, custaccount.Balance);
+                        Console.WriteLine("CustomerNumber: {0}, Balance: {1:c}, press any key to continue", custaccount.CustomerNumber, custaccount.Balance);
+                        Console.ReadLine();
                     }
                 }
             }

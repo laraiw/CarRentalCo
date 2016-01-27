@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace BedrockCars
     {
         #region Variables
         /// <summary
-        /// Shared memory for storing the last customer number, and initializing to 0
+        /// Shared memory for storing the last customer number and initializing to zero
         /// </summary>
         private static int lastCustomerNumber = 0;
        #endregion
@@ -30,6 +31,8 @@ namespace BedrockCars
        /// <summary>
        /// Customer number
        /// </summary>
+       /// 
+       [Key]
        public int CustomerNumber { get;
             private set; }
 
