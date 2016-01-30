@@ -31,7 +31,7 @@ namespace BedrockCars
         {
             using (var db = new CarRentalModel())
             {
-                var custaccount = new CustomerAccount(custname, totalamount);
+                CustomerAccount custaccount = new CustomerAccount(custname, totalamount);
                 custaccount.DrivingLicense = driv_lic;
                 custaccount.TypeOfAccount = accountType;
                 //custaccounts.Add(custaccount);
@@ -41,13 +41,56 @@ namespace BedrockCars
             }
         }
 
-        //public static void PayBalance()
 
         public static IEnumerable<CustomerAccount> GetAllAccountsByDL(int driv_lic)
         {
             var db = new CarRentalModel();
             return db.CustomerAccounts.Where(a => a.DrivingLicense == driv_lic);
         }
-    
+
+        public static void PayBalance(int custAccount, decimal paidamount)
+        {
+            using (var db = new CarRentalModel())
+            {
+                var custaccount = db.CustomerAccounts.Where(a => a.CustomerNumber == custAccount).First();
+                var originalcopy = custaccount;
+                custaccount.PayBalance(paidamount);
+                db.Entry(originalcopy).CurrentValues.SetValues(custaccount);
+                var transactionSuccess = CreateTransaction(DateTime.Now, "Deposit", paidamount, custAccount, TransactionType.Credit);
+                if (transactionSuccess)
+                {
+                    db.SaveChanges();
+                }
+               // return custaccount.Balance;
+            }
+        }
+
+        private static bool CreateTransaction(DateTime transactionDate,string description, decimal amount, int accountnumber, TransactionType transactionType)
+        {
+            try
+            {
+                using (var db = new CarRentalModel())
+                {
+                    var transaction = new RentalTransaction
+                    {
+                        CustomerNumber = accountnumber,
+                        TransactionDate = transactionDate,
+                        Description = description,
+                        Debit = (transactionType == TransactionType.Debit)
+                        ? amount : 0.0M,
+                        Credit = (transactionType == TransactionType.Credit)
+                        ? amount : 0.0M
+                    };
+                    db.Transactions.Add(transaction);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
     }
 }

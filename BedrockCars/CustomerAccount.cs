@@ -19,7 +19,7 @@ namespace BedrockCars
         /// <summary
         /// Shared memory for storing the last customer number and initializing to zero
         /// </summary>
-        private static int lastCustomerNumber = 0;
+        ///private static int lastCustomerNumber = 0;
        #endregion
 
        #region Properties
@@ -45,6 +45,9 @@ namespace BedrockCars
        public int DrivingLicense { get; set; }
 
         public AccountType TypeOfAccount { get; set; }
+
+        public virtual ICollection<RentalTransaction> Transactions { get; set; }
+
         #endregion
 
 
@@ -52,7 +55,7 @@ namespace BedrockCars
 
         public CustomerAccount()
         {
-            CustomerNumber = ++lastCustomerNumber;
+        
         }
 
         public CustomerAccount(string custname)
@@ -93,16 +96,16 @@ namespace BedrockCars
         /// <exception>ArgumentException</exception>
         public decimal PayBalance(decimal paidamount)
         {
-            if (paidamount < 0)
-            {
-                throw new ArgumentException("Your payment must equal to your balance");
-            }
+            //if (paidamount < 0)
+            //{
+            //    throw new ArgumentException("Your payment must equal to your balance");
+            //}
          
-            if (paidamount >= Balance)
+            //if (paidamount >= Balance)
           //  {
           //      throw new ArgumentException("Your payment must equal to your balance, you have overpaid");
           //  }
-            Balance = Balance - paidamount;
+            Balance = Balance + paidamount;
            return Balance;
          }
 

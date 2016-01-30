@@ -21,7 +21,10 @@ namespace BedrockCars
                 {
                     Console.WriteLine("No accounts found. One will be created");
                     var custaccount = CarRentalFactory.CreateAccount("Dummy", convertedDrivingLicense);
-                   // CarRentalFactory.PayBalance(custaccount.CustomerNumber, 100);
+                    CarRentalFactory.PayBalance(custaccount.CustomerNumber, 100);
+                    Console.WriteLine("Your account has been successfully created. You get 100$$.");
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadLine();
                 }
                 else
                 {

@@ -21,6 +21,7 @@ namespace BedrockCars
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         public virtual DbSet<CustomerAccount> CustomerAccounts { get; set; }
+        public virtual DbSet<RentalTransaction> Transactions { get; set; }
     }
 
     //public class MyEntity
