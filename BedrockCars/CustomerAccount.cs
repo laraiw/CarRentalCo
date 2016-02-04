@@ -64,10 +64,10 @@ namespace BedrockCars
             CustomerName = custname;
         }
 
-        public CustomerAccount(string custname, decimal totalamount)
+        public CustomerAccount(string custname, decimal amount)
             : this(custname)
         {
-            DisplayBalance(totalamount);
+            DisplayBalance(amount);
         }
 
         #endregion
@@ -80,11 +80,11 @@ namespace BedrockCars
         /// <summary>
         /// Display balance
         /// </summary>
-        /// <param name="totalamount">customer's total bill</param>
+        /// <param name="amount">customer's total bill</param>
         /// <returns>Returns balance</returns>
-        public decimal DisplayBalance(decimal totalamount)
+        public decimal DisplayBalance(decimal amount)
         {
-            Balance = Balance + totalamount;
+            Balance = Balance + amount;
             return Balance;
         }
 
@@ -94,19 +94,19 @@ namespace BedrockCars
         /// <param name="paidamount">customer's payment towards bill</param>
         /// <returns>Returns balance</returns>
         /// <exception>ArgumentException</exception>
-        public decimal PayBalance(decimal paidamount)
+        public decimal PayBalance(decimal amount)
         {
-            //if (paidamount < 0)
+            //if (amount < 0)
             //{
             //    throw new ArgumentException("Your payment must equal to your balance");
             //}
-         
-            //if (paidamount >= Balance)
-          //  {
-          //      throw new ArgumentException("Your payment must equal to your balance, you have overpaid");
-          //  }
-            Balance = Balance + paidamount;
-           return Balance;
+
+            //if (amount >= Balance)
+            //  {
+            //      throw new ArgumentException("Your payment must equal to your balance, you have overpaid");
+            //  }
+            Balance -= amount;
+            return Balance;
          }
 
     //Retrieve Customer Details

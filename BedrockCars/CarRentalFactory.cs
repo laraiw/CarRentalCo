@@ -27,11 +27,11 @@ namespace BedrockCars
             }
         }
 
-        public static CustomerAccount CreateAccount(string custname, int driv_lic, decimal totalamount, AccountType accountType)
+        public static CustomerAccount CreateAccount(string custname, int driv_lic, decimal amount, AccountType accountType)
         {
             using (var db = new CarRentalModel())
             {
-                CustomerAccount custaccount = new CustomerAccount(custname, totalamount);
+                CustomerAccount custaccount = new CustomerAccount(custname, amount);
                 custaccount.DrivingLicense = driv_lic;
                 custaccount.TypeOfAccount = accountType;
                 //custaccounts.Add(custaccount);
@@ -48,20 +48,37 @@ namespace BedrockCars
             return db.CustomerAccounts.Where(a => a.DrivingLicense == driv_lic);
         }
 
-        public static void PayBalance(int custAccount, decimal paidamount)
+        public static decimal PayBalance(int custAccount, decimal amount) /* deposit */
         {
             using (var db = new CarRentalModel())
             {
                 var custaccount = db.CustomerAccounts.Where(a => a.CustomerNumber == custAccount).First();
                 var originalcopy = custaccount;
-                custaccount.PayBalance(paidamount);
+                custaccount.PayBalance(amount);
                 db.Entry(originalcopy).CurrentValues.SetValues(custaccount);
-                var transactionSuccess = CreateTransaction(DateTime.Now, "Deposit", paidamount, custAccount, TransactionType.Credit);
+                var transactionSuccess = CreateTransaction(DateTime.Now, "Deposit", amount, custAccount, TransactionType.Credit);
                 if (transactionSuccess)
                 {
                     db.SaveChanges();
                 }
-               // return custaccount.Balance;
+                return custaccount.Balance;
+            }
+        }
+
+        public static decimal DisplayBalance(int custAccount, decimal amount) /* withdraw */
+        {
+            using (var db = new CarRentalModel())
+            {
+                var custaccount = db.CustomerAccounts.Where(a => a.CustomerNumber == custAccount).First();
+                var originalcopy = custaccount;
+                custaccount.PayBalance(amount);
+                db.Entry(originalcopy).CurrentValues.SetValues(custaccount);
+                var transactionSuccess = CreateTransaction(DateTime.Now, "withdrawn", amount, custAccount, TransactionType.Debit);
+                if (transactionSuccess)
+                {
+                    db.SaveChanges();
+                }
+                return custaccount.Balance;
             }
         }
 
