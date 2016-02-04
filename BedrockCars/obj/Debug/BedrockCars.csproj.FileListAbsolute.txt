@@ -1,0 +1,11 @@
+C:\Users\laraiw\Desktop\Desktop Files\visual studio 2015 Projects\BedrockCars\BedrockCars\bin\Debug\BedrockCars.exe.config
+C:\Users\laraiw\Desktop\GitHub\BedrockCars\BedrockCars\bin\Debug\BedrockCars.exe.config
+C:\Users\laraiw\Desktop\GitHub\BedrockCars\BedrockCars\bin\Debug\BedrockCars.exe
+C:\Users\laraiw\Desktop\GitHub\BedrockCars\BedrockCars\bin\Debug\BedrockCars.pdb
+C:\Users\laraiw\Desktop\GitHub\BedrockCars\BedrockCars\obj\Debug\BedrockCars.csprojResolveAssemblyReference.cache
+C:\Users\laraiw\Desktop\GitHub\BedrockCars\BedrockCars\obj\Debug\BedrockCars.exe
+C:\Users\laraiw\Desktop\GitHub\BedrockCars\BedrockCars\obj\Debug\BedrockCars.pdb
+C:\Users\laraiw\Desktop\GitHub\BedrockCars\BedrockCars\bin\Debug\EntityFramework.dll
+C:\Users\laraiw\Desktop\GitHub\BedrockCars\BedrockCars\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\laraiw\Desktop\GitHub\BedrockCars\BedrockCars\bin\Debug\EntityFramework.xml
+C:\Users\laraiw\Desktop\GitHub\BedrockCars\BedrockCars\bin\Debug\EntityFramework.SqlServer.xml
